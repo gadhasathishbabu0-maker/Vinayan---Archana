@@ -156,10 +156,11 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
   function setup() {
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
+   
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
+   
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "#c9a45c";
     ctx.fillRect(0, 0, rect.width, rect.height);
@@ -167,7 +168,9 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
     ctx.fillStyle = "#ffffff";
     ctx.font = "bold 20px Arial";
     ctx.textAlign = "center";
+    ctx.textBaseline = " middle";
     ctx.fillText("Scratch Here ✨", rect.width / 2, rect.height / 2);
+   
     ctx.globalCompositeOperation = "destination-out";
   }
 
