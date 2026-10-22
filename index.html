@@ -126,21 +126,19 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
     style="width:100%;max-width:450px;height:auto;border-radius:15px;box-shadow:0 4px 12px #d8a7b5;"
   />
 </section>
-  
-<!-- Wedding Scratch Card -->
+   <!-- Wedding Scratch Card -->
 <div id="scratch-page" style="max-width:400px;margin:30px auto;padding:20px;text-align:center;background:#fff0f5;border-radius:20px;font-family:Arial,sans-serif;">
   <h2 style="color:#a34d65;">A Special Surprise 💕</h2>
   <p style="color:#754052;">Scratch to Reveal!</p>
 
   <div style="position:relative;width:100%;height:180px;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px #e5b7c5;">
-    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#a34d65;font-size:20px;font-weight:bold; visibility; hidden;">
-      <div>💕 Vinayan & Archana 💕</div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#a34d65;font-size:20px;font-weight:bold;">
+      <div>💕 Vinayan &amp; Archana 💕</div>
       <div style="font-size:16px;margin-top:12px;">December 12, 2026</div>
       <div style="font-size:14px;margin-top:8px;">You're Invited!</div>
     </div>
     <canvas id="scratch-canvas" style="position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;"></canvas>
   </div>
-
   <p style="font-size:13px;color:#754052;">Scratch the card to reveal your surprise ❤️</p>
 </div>
 
@@ -152,31 +150,65 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
 
   const ctx = canvas.getContext("2d");
   let scratching = false;
+  let initialized = false;
 
   function setup() {
     const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
     const dpr = window.devicePixelRatio || 1;
-   
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-   
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "#c9a45c";
     ctx.fillRect(0, 0, rect.width, rect.height);
 
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#fff";
     ctx.font = "bold 20px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("Scratch Here ✨", rect.width / 2, rect.height / 2);
-   
+
     ctx.globalCompositeOperation = "destination-out";
+    initialized = true;
   }
 
-  function scratch(e) {
-    if (!scratching) return;
+  function checkVisible() {
+    if (!initialized && canvas.getBoundingClientRect().width > 0) {
+      setup();
+    }
+  }
+
+  new MutationObserver(checkVisible).observe(
+    document.getElementById("main-content"),
+    { attributes: true, attributeFilter: ["style"] }
+  );
+
+  checkVisible();
+
+  canvas.addEventListener("pointerdown", function(e) {
+    checkVisible();
+    if (!initialized) return;
+
+    scratching = true;
+    canvas.setPointerCapture(e.pointerId);
+    erase(e);
     e.preventDefault();
+  });
+
+  canvas.addEventListener("pointermove", function(e) {
+    if (scratching) {
+      erase(e);
+      e.preventDefault();
+    }
+  });
+
+  canvas.addEventListener("pointerup", () => scratching = false);
+  canvas.addEventListener("pointercancel", () => scratching = false);
+
+  function erase(e) {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -184,10 +216,10 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
     ctx.arc(x, y, 20, 0, Math.PI * 2);
     ctx.fill();
   }
-canvas.addEventListener("pointerdown", e => {
-    scratching = true;
-    canvas.setPointerCapture(e.pointerId);
-    scratch(e)
+})();
+</script>
+  
+
   
 <!-- Wedding Countdown -->
 <div style="max-width:400px;margin:30px auto;padding:25px;text-align:center;background:#fff0f5;border-radius:20px;font-family:Arial,sans-serif;">
