@@ -194,6 +194,18 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
   canvas.addEventListener("pointermove", scratch);
   canvas.addEventListener("pointerup", () => scratching = false);
   canvas.addEventListener("pointercancel", () => scratching = false);
+ canvas.addEventListener("pointerup", () => {
+  const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  let cleared = 0;
+
+  for (let i = 3; i < pixels.length; i += 4) {
+    if (pixels[i] === 0) cleared++;
+  }
+
+  if (cleared > pixels.length / 4 * 0.35) {
+    document.getElementById("scratch-message").style.visibility = "visible";
+  }
+});
 
   setup();
 })();
