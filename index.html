@@ -184,8 +184,7 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
     ctx.arc(x, y, 20, 0, Math.PI * 2);
     ctx.fill();
   }
-
-  canvas.addEventListener("pointerdown", e => {
+canvas.addEventListener("pointerdown", e => {
     scratching = true;
     canvas.setPointerCapture(e.pointerId);
     scratch(e);
@@ -206,6 +205,7 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
     document.getElementById("scratch-message").style.visibility = "visible";
   }
 });
+  
 
   setup();
 })();
