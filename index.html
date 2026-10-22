@@ -140,5 +140,30 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
   setup();
 })();
 </script>
-  
+  <div style="text-align:center; padding:25px; background:#fff0f3; border-radius:15px; margin:20px 0;">
+  <h2 style="color:#a34d65;">💕 Wedding Countdown 💕</h2>
+  <div id="countdown" style="font-size:22px; color:#754052;"></div>
+</div>
+
+<script>
+function updateCountdown() {
+  const wedding = new Date("December 12, 2026 18:00:00").getTime();
+  const now = new Date().getTime();
+  const diff = wedding - now;
+
+  if (diff <= 0) {
+    document.getElementById("countdown").innerHTML = "💕 Happy Wedding! 💕";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+  document.getElementById("countdown").innerHTML =
+    days + " Days " + hours + " Hours " + minutes + " Minutes";
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+</script>
 </html>
