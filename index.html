@@ -186,53 +186,6 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
   setInterval(updateCountdown, 1000);
 })();
 </script> 
-  <!-- Wedding Countdown -->
-<div style="max-width:400px;margin:30px auto;padding:25px;text-align:center;background:#fff0f5;border-radius:20px;font-family:Arial,sans-serif;">
-  <h2 style="color:#a34d65;">💕 Our Wedding Day 💕</h2>
-  <p style="color:#754052;">Counting Down to Forever!</p>
-
-  <div id="wedding-countdown" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;color:#754052;">
-    <div><strong id="cd-days" style="font-size:28px;">00</strong><br>Days</div>
-    <div><strong id="cd-hours" style="font-size:28px;">00</strong><br>Hours</div>
-    <div><strong id="cd-minutes" style="font-size:28px;">00</strong><br>Minutes</div>
-    <div><strong id="cd-seconds" style="font-size:28px;">00</strong><br>Seconds</div>
-  </div>
-
-  <p style="color:#a34d65;font-weight:bold;margin-top:20px;">
-    Vinayan &amp; Archana<br>
-    December 12, 2026 | 6:00 PM
-  </p>
-</div>
-
-<script>
-(function () {
-  const weddingDate = new Date("2026-12-12T18:00:00+05:30").getTime();
-
-  function updateCountdown() {
-    let remaining = weddingDate - Date.now();
-
-    if (remaining <= 0) {
-      document.getElementById("wedding-countdown").innerHTML =
-        "<h3>💕 The Wedding Day Is Here! 💕</h3>";
-      return;
-    }
-
-    document.getElementById("cd-days").textContent =
-      Math.floor(remaining / 86400000);
-
-    document.getElementById("cd-hours").textContent =
-      Math.floor((remaining % 86400000) / 3600000);
-
-    document.getElementById("cd-minutes").textContent =
-      Math.floor((remaining % 3600000) / 60000);
-
-    document.getElementById("cd-seconds").textContent =
-      Math.floor((remaining % 60000) / 1000);
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-})();
-</script>  
+  
 </body>  
 </html>
