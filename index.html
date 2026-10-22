@@ -188,28 +188,6 @@ canvas.addEventListener("pointerdown", e => {
     scratching = true;
     canvas.setPointerCapture(e.pointerId);
     scratch(e);
-  });
-
-  canvas.addEventListener("pointermove", scratch);
-  canvas.addEventListener("pointerup", () => scratching = false);
-  canvas.addEventListener("pointercancel", () => scratching = false);
- canvas.addEventListener("pointerup", () => {
-  const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-  let cleared = 0;
-
-  for (let i = 3; i < pixels.length; i += 4) {
-    if (pixels[i] === 0) cleared++;
-  }
-
-  if (cleared > pixels.length / 4 * 0.35) {
-    document.getElementById("scratch-message").style.visibility = "visible";
-  }
-});
-  
-
-  setup();
-})();
-</script> 
   
 <!-- Wedding Countdown -->
 <div style="max-width:400px;margin:30px auto;padding:25px;text-align:center;background:#fff0f5;border-radius:20px;font-family:Arial,sans-serif;">
