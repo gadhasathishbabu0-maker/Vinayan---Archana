@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7eee6">
+<title>Vinayan & Archana | Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fff8f0;--rose:#a85f68;--deep:#633d43;--gold:#b7955b;--ink:#493438}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Montserrat,Arial,sans-serif;text-align:center}
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:28px 18px;position:relative;overflow:hidden;background:radial-gradient(ellipse at top,#fffdf9 0,#f9eee6 58%,#f0ddd4 100%)}
+.hero:before,.hero:after{content:"❦";position:absolute;color:#c5a16a;opacity:.32;font-size:clamp(90px,24vw,190px);line-height:1}
+.hero:before{top:10px;left:-18px;transform:rotate(-35deg)}
+.hero:after{bottom:5px;right:-20px;transform:rotate(145deg)}
+.frame{width:min(100%,520px);padding:38px 22px 34px;border:1px solid #c9a86e;outline:1px solid #c9a86e;outline-offset:6px;background:#fffaf4d9;position:relative;animation:rise 1.2s ease both}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin:0 0 22px}
+.names{font-family:"Great Vibes",cursive;font-size:clamp(52px,14vw,82px);font-weight:400;color:var(--rose);line-height:1.1;margin:0}
+.amp{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--gold);margin:6px 0}
+.rule{width:90px;height:1px;background:var(--gold);margin:24px auto}
+.invite{font-family:"Cormorant Garamond",serif;font-size:23px;letter-spacing:1px;margin:0 0 12px}
+.copy{font-size:11px;line-height:2;letter-spacing:1.3px;text-transform:uppercase;color:#80696a}
+.date{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--deep);margin:18px 0 4px}
+.time{font-size:11px;letter-spacing:1.4px}
+.scroll{display:inline-block;margin-top:27px;color:var(--rose);text-decoration:none;border:1px solid #c9a86e;padding:12px 19px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+section.details{padding:70px 20px 80px;background:#fffaf5}
+.smallcap{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+h2{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:500;color:var(--rose);margin:12px 0}
+.venue{font-family:"Cormorant Garamond",serif;font-size:26px;line-height:1.35;margin:18px auto 8px;max-width:420px}
+.detailcopy{font-size:12px;line-height:2;color:#80696a}
+.heart{color:var(--rose);font-size:24px;margin:20px}
+footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:#9d7b63;background:#f4e5dc}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+  <div class="frame">
+    <p class="eyebrow">Together with our families</p>
+    <p class="copy">joyfully invite you to celebrate the wedding of</p>
+    <h1 class="names">Vinayan</h1>
+    <div class="amp">&</div>
+    <h1 class="names">Archana</h1>
+    <div class="rule"></div>
+    <p class="invite">A beautiful beginning</p>
+    <p class="copy">Saturday</p>
+    <p class="date">12 · December · 2026</p>
+    <p class="time">6:00 PM — 9:00 PM</p>
+    <a class="scroll" href="#details">Wedding Details ↓</a>
+  </div>
+</section>
+<section class="details" id="details">
+  <p class="smallcap">Please join us</p>
+  <h2>Celebrate Love</h2>
+  <div class="heart">♡</div>
+  <p class="detailcopy">We would be delighted to have you with us<br>as we begin our forever together.</p>
+  <div class="rule"></div>
+  <p class="smallcap">Venue</p>
+  <p class="venue">Mammen Memorial Auditorium</p>
+  <p class="detailcopy">12 December 2026<br>6:00 PM to 9:00 PM</p>
+  <div class="heart">❦</div>
+  <p class="invite">With love, Vinayan & Archana</p>
+</section>
+</main>
+<footer>Made with love ♡</footer>
+</body>
+</html>
