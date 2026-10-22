@@ -38,6 +38,42 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
 </style>
 </head>  
 <body>
+  <style>
+#cover-page {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 35px 20px;
+  box-sizing: border-box;
+  background: url("IMG_20261022_185628.png")
+    center center / contain no-repeat;
+  background-color: #fff;
+}
+
+#cover-page button {
+  margin-bottom: 20px;
+  padding: 12px 24px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 5px #000;
+}
+</style>
+
+<div id="cover-page">
+  <button onclick="
+    document.getElementById('cover-page').remove();
+    document.getElementById('main-content').style.display='block';
+  ">TAP TO OPEN</button>
+</div>
 <main>
 <section class="hero">
   <div class="frame">
