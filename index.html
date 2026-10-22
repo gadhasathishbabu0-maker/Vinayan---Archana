@@ -69,4 +69,76 @@ footer{padding:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:
 </main>
 <footer>Made with love ♡</footer>
 </body>
+  <div style="text-align:center; margin:30px auto; padding:20px; background:#fff5f7; border-radius:18px;">
+  <h2 style="color:#a34d65;">🎁 A Special Surprise 🎁</h2>
+  <p style="color:#754052;">താഴെ ഉരച്ച് സർപ്രൈസ് കാണൂ ❤️</p>
+
+  <div id="scratchBox" style="position:relative; max-width:320px; height:150px; margin:auto; border-radius:12px; overflow:hidden; background:#ffe0e8;">
+    <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:15px; color:#963e5a; font-size:18px; font-weight:bold;">
+      💕 വിനയൻ & അർച്ചന 💕<br>ഡിസംബർ 12-ന് കാണാം!
+    </div>
+    <canvas id="scratchCanvas" style="position:absolute; inset:0; width:100%; height:100%; touch-action:none;"></canvas>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById("scratchCanvas");
+  const box = document.getElementById("scratchBox");
+  if (!canvas || !box) return;
+
+  const ctx = canvas.getContext("2d");
+  let drawing = false;
+
+  function setup() {
+    const rect = box.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "#c9a66b";
+    ctx.fillRect(0, 0, rect.width, rect.height);
+    ctx.fillStyle = "#fff8ed";
+    ctx.font = "bold 19px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("✨ ഇവിടെ ഉരയ്ക്കൂ ✨", rect.width / 2, rect.height / 2);
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.lineWidth = 28;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+  }
+
+  function point(e) {
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  canvas.addEventListener("pointerdown", function(e) {
+    drawing = true;
+    canvas.setPointerCapture(e.pointerId);
+    const p = point(e);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 14, 0, Math.PI * 2);
+    ctx.fill();
+    e.preventDefault();
+  });
+
+  canvas.addEventListener("pointermove", function(e) {
+    if (!drawing) return;
+    const p = point(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    e.preventDefault();
+  });
+
+  function stop() { drawing = false; ctx.beginPath(); }
+  canvas.addEventListener("pointerup", stop);
+  canvas.addEventListener("pointercancel", stop);
+  setup();
+})();
+</script>
+  
 </html>
